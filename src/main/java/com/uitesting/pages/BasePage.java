@@ -8,10 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-/**
- * Base class for all Page Objects.
- * Contains common methods for interacting with web elements.
- */
+
 public abstract class BasePage {
 
     protected final WebDriver driver;

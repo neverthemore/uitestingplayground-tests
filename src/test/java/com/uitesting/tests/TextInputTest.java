@@ -7,16 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-/**
- * Tests for: http://www.uitestingplayground.com/textinput
- *
- * Scenario 5 (additional): Text Input
- *   - Typing in the input field does NOT change the button label in
- *     real time — the label only updates at the moment the button is
- *     clicked, and only if the typed text was registered through real
- *     'input'/'change' browser events (which sendKeys() produces).
- *   - The button must be located by its stable "id".
- */
+
 @Epic("UI Testing Playground")
 @Feature("Text Input — Button Label Updated on Click")
 public class TextInputTest extends BaseTest {
@@ -42,10 +33,8 @@ public class TextInputTest extends BaseTest {
     public void testButtonLabelUpdatesOnlyAfterClick() {
         TextInputPage page = new TextInputPage(driver);
 
-        // 1. Open the text input demo page
         page.open();
 
-        // 2. Assert default label
         String initialLabel = page.getButtonText();
         log.info("Initial button label: '{}'", initialLabel);
         Assert.assertEquals(
@@ -53,11 +42,9 @@ public class TextInputTest extends BaseTest {
                 DEFAULT_BUTTON_TEXT,
                 "Button should show its default label before any interaction");
 
-        // 3. Type the desired button name (sendKeys fires real input events)
         log.info("Typing new button name: '{}'", NEW_BUTTON_NAME);
         page.typeButtonName(NEW_BUTTON_NAME);
 
-        // 4. Label must still be unchanged — it only updates on click
         String labelBeforeClick = page.getButtonText();
         log.info("Button label right after typing (before click): '{}'", labelBeforeClick);
         Assert.assertEquals(
@@ -65,10 +52,8 @@ public class TextInputTest extends BaseTest {
                 DEFAULT_BUTTON_TEXT,
                 "Button label should NOT change just from typing, only after a click");
 
-        // 5. Click the button using its stable id
         page.clickUpdatingButton();
 
-        // 6. Assert label is now the typed text
         page.waitForButtonText(NEW_BUTTON_NAME);
         String finalLabel = page.getButtonText();
         log.info("Final button label after click: '{}'", finalLabel);

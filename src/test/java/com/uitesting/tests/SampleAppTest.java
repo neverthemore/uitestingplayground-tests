@@ -7,13 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-/**
- * Tests for: http://www.uitestingplayground.com/sampleapp
- *
- * Scenario 1 (required): Sample App
- *   - Valid login → welcome message shown
- *   - Invalid login → error message shown
- */
 @Epic("UI Testing Playground")
 @Feature("Sample App — Login")
 public class SampleAppTest extends BaseTest {
@@ -24,7 +17,6 @@ public class SampleAppTest extends BaseTest {
     private static final String VALID_PASSWORD   = "pwd";
     private static final String INVALID_PASSWORD = "wrong123";
 
-    // -----------------------------------------------------------------------
 
     @Test(description = "Login with valid credentials shows welcome message")
     @Story("Valid Login")
@@ -56,7 +48,6 @@ public class SampleAppTest extends BaseTest {
                 + "', but was: " + status);
     }
 
-    // -----------------------------------------------------------------------
 
     @Test(description = "Login with invalid password shows error message")
     @Story("Invalid Login")

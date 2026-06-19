@@ -7,16 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-/**
- * Tests for: http://www.uitestingplayground.com/dynamicid
- *
- * Scenario 4 (additional): Dynamic ID
- *   - The button has a randomly generated "id" that changes on every reload.
- *   - Tests must use a STABLE locator (class, text, etc.) instead of the id.
- *   - This test proves:
- *       (a) the id really does change between page loads,
- *       (b) a class-based locator can click the button reliably.
- */
 @Epic("UI Testing Playground")
 @Feature("Dynamic ID — Stable Locator Strategy")
 public class DynamicIdTest extends BaseTest {
@@ -39,10 +29,8 @@ public class DynamicIdTest extends BaseTest {
     public void testClickButtonWithDynamicId() {
         DynamicIdPage page = new DynamicIdPage(driver);
 
-        // 1. Open page
         page.open();
 
-        // 2. Assert button is visible and has the expected label
         Assert.assertTrue(
                 page.isButtonVisible(),
                 "The button with dynamic id should be visible");
@@ -52,16 +40,13 @@ public class DynamicIdTest extends BaseTest {
                 page.getExpectedButtonText(),
                 "Button label should always equal 'Button with Dynamic ID'");
 
-        // 3. Capture id from the first load
         String idBeforeReload = page.getButtonId();
         log.info("Button id before reload: '{}'", idBeforeReload);
         Assert.assertNotNull(idBeforeReload, "Button id should not be null");
         Assert.assertFalse(idBeforeReload.isEmpty(), "Button id should not be empty");
 
-        // 4. Reload the page
         page.reloadPage();
 
-        // 5. Capture id after reload and assert it changed
         String idAfterReload = page.getButtonId();
         log.info("Button id after reload: '{}'", idAfterReload);
         Assert.assertNotEquals(
@@ -70,7 +55,6 @@ public class DynamicIdTest extends BaseTest {
                 "Button id should be different after page reload "
                 + "(before=" + idBeforeReload + ", after=" + idAfterReload + ")");
 
-        // 6. Click using stable class-based locator — must not throw
         page.clickButton();
     }
 }

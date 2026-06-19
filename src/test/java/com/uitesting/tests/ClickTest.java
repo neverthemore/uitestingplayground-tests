@@ -7,17 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-/**
- * Tests for: http://www.uitestingplayground.com/click
- *
- * Scenario 3 (additional): Click
- *   - The page ignores purely synthetic clicks (e.g. JS-dispatched ones)
- *     and only reacts to real, physically-driven clicks (screenX > 0).
- *   - Selenium's native click() command produces exactly that kind of
- *     click, so a plain click() is the correct, working approach here.
- *   - After a successful click the button CSS class changes:
- *       btn-primary → btn-success
- */
 @Epic("UI Testing Playground")
 @Feature("Click — Native vs Synthetic Click Events")
 public class ClickTest extends BaseTest {
@@ -37,22 +26,18 @@ public class ClickTest extends BaseTest {
     public void testNativeClickChangesButtonState() {
         ClickPage page = new ClickPage(driver);
 
-        // 1. Open the click demo page
         log.info("Opening Click page");
         page.open();
 
-        // 2. Assert the button starts in its default (primary) state
         String initialClass = page.getButtonClass();
         log.info("Initial button class: '{}'", initialClass);
         Assert.assertTrue(
                 initialClass.contains("btn-primary"),
                 "Button should initially have class 'btn-primary', but was: " + initialClass);
 
-        // 3. Perform a real Selenium click (native click — has real screen coordinates)
         log.info("Performing a native Selenium click");
         page.clickButton();
 
-        // 4. Wait until the button class changes, then assert
         page.waitForButtonClass("btn-success");
         String updatedClass = page.getButtonClass();
         log.info("Updated button class: '{}'", updatedClass);

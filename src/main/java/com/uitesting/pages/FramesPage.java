@@ -5,24 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-/**
- * Page Object for http://www.uitestingplayground.com/frames
- *
- * The page contains an outer iframe (id="frame-outer") whose content is
- * injected via JavaScript (srcdoc). That outer frame in turn contains a
- * nested inner iframe (id="frame-inner"), injected the same way. Both
- * frames contain IDENTICAL button markup, on purpose, so the exact same
- * locators can be reused once you've switched into the right frame
- * context:
- *
- *   - button[data-action="edit"]   → "Edit"     (data-* attribute strategy)
- *   - button with text "Submit"    → "Submit"   (text strategy)
- *   - button[name="my-button"]     → "Click me" (name attribute strategy)
- *   - button.btn-class             → "Primary"  (xpath-with-class strategy)
- *
- * Clicking any button writes "Button pressed: <label>" into that frame's
- * own #result element.
- */
 public class FramesPage extends BasePage {
 
     private static final String URL = "http://www.uitestingplayground.com/frames";

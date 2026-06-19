@@ -9,13 +9,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 
-/**
- * Writes environment.properties into the allure-results directory before
- * the suite starts, so the Allure report's "Environment" widget shows
- * useful context (OS, Java version, browser, base URL, run mode).
- *
- * Registered as a TestNG listener in src/test/resources/testng.xml.
- */
 public class AllureEnvironmentListener implements IExecutionListener {
 
     private static final String ALLURE_RESULTS_DIR = "target/allure-results";
@@ -42,7 +35,6 @@ public class AllureEnvironmentListener implements IExecutionListener {
                 props.store(out, "Allure environment info — generated automatically");
             }
         } catch (IOException e) {
-            // Non-critical: report still generates without environment widget
             System.err.println("Could not write Allure environment.properties: "
                     + e.getMessage());
         }

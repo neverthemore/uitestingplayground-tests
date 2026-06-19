@@ -4,20 +4,12 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-/**
- * Page Object for http://www.uitestingplayground.com/dynamicid
- *
- * The page has a button whose HTML "id" attribute is randomly re-generated
- * on every page load.  A test MUST NOT use the id to locate this element —
- * a stable class selector is used instead.
- */
 public class DynamicIdPage extends BasePage {
 
     private static final String URL = "http://www.uitestingplayground.com/dynamicid";
 
     private static final String EXPECTED_BUTTON_TEXT = "Button with Dynamic ID";
 
-    // Stable locator: use class, NOT id
     private final By button = By.cssSelector("button.btn-primary");
 
     public DynamicIdPage(WebDriver driver) {

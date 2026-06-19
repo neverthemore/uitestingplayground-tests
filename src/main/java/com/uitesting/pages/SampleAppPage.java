@@ -4,12 +4,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-/**
- * Page Object for http://www.uitestingplayground.com/sampleapp
- *
- * Represents the Sample App login page.
- * Valid credentials: any username + password "pwd"
- */
 public class SampleAppPage extends BasePage {
 
     private static final String URL = "http://www.uitestingplayground.com/sampleapp";

@@ -15,18 +15,6 @@ import org.testng.annotations.BeforeMethod;
 
 import java.time.Duration;
 
-/**
- * Base class for all UI tests.
- *
- * Initialises a Chrome WebDriver before each test method and quits it
- * afterwards. On failure, a screenshot is automatically attached to
- * the Allure report. Every step is logged via SLF4J (see
- * simplelogger.properties for log formatting).
- *
- * Run modes:
- *   mvn clean test                  → headless (default, good for CI)
- *   mvn clean test -Dheadless=false → headed  (good for local debugging)
- */
 public class BaseTest {
 
     private static final Logger log = LoggerFactory.getLogger(BaseTest.class);

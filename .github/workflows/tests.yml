@@ -26,11 +26,10 @@ jobs:
           java-version: '17'
           cache: maven
 
-      # ubuntu-latest runners already ship with a recent Google Chrome,
-      # WebDriverManager auto-downloads the matching ChromeDriver version.
+
       - name: Run UI tests (headless)
         run: mvn -B clean test -Dheadless=true
-        continue-on-error: true   # let the report build even if some tests fail
+        continue-on-error: true
 
       - name: Get Allure history
         uses: actions/checkout@v4
