@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.9.dtd">
+
+<suite name="UI Testing Playground — Full Suite" verbose="2" parallel="false">
+
+    <!-- Allure listener: generates test result data for the report -->
+    <!-- Environment listener: writes environment.properties for the report -->
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+        <listener class-name="com.uitesting.listeners.AllureEnvironmentListener"/>
+    </listeners>
+
+    <!-- Scenario 1 (required): Sample App -->
+    <test name="Sample App Tests">
+        <classes>
+            <class name="com.uitesting.tests.SampleAppTest"/>
+        </classes>
+    </test>
+
+    <!-- Scenario 2 (required): Frames -->
+    <test name="Frames Tests">
+        <classes>
+            <class name="com.uitesting.tests.FramesTest"/>
+        </classes>
+    </test>
+
+    <!-- Scenario 3 (additional): Click -->
+    <test name="Click Tests">
+        <classes>
+            <class name="com.uitesting.tests.ClickTest"/>
+        </classes>
+    </test>
+
+    <!-- Scenario 4 (additional): Dynamic ID -->
+    <test name="Dynamic ID Tests">
+        <classes>
+            <class name="com.uitesting.tests.DynamicIdTest"/>
+        </classes>
+    </test>
+
+    <!-- Scenario 5 (additional): Text Input -->
+    <test name="Text Input Tests">
+        <classes>
+            <class name="com.uitesting.tests.TextInputTest"/>
+        </classes>
+    </test>
+
+</suite>
